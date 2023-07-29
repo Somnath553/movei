@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import './Header.css';
 import logo from '../assest/logo.png';
 import {Link} from "react-router-dom"

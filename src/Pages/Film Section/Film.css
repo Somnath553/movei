@@ -30,6 +30,7 @@ align-self: stretch;
 .films-list li p {
   margin: 5px 0;
   margin-right: 5rem;
+  background: #344064;
 }
 .menu{
 display: flex;

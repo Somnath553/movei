@@ -6,6 +6,8 @@ import Film from '../../assest/FilmReel.jpg';
 import list from '../../assest/View list.png';
 import menu from '../../assest/Menu Button.png';
 import Loading from '../../Pages/Loading';
+import GridComponents from '../../Component/GridComponents';
+// import Grid from '../../Component/Grid';
 
 const Films = () => {
   const [films, setFilms] = useState([]);
@@ -30,31 +32,36 @@ const Films = () => {
     <div className='films-container'>
       <div className='flex-item'>
       <h2>Films</h2>
-      <div className="btn-container ">
+      {toggleViewMode &&<div className="btn-container ">
       <button class="btn active" onClick={() => setToggleViewMode(!toggleViewMode)}>
       <img src={list} alt="" className='active' /> 
-        {toggleViewMode ? 'grid' : 'list'}
+        grid
         
         </button>
-      </div>
+      </div>}
+      {!toggleViewMode &&<div className="btn-container ">
+      <button class="btn active" onClick={() => setToggleViewMode(!toggleViewMode)}>
+      <img src={list} alt="" className='active' /> 
+        list
+        </button>
+      </div>}
       
        
       </div>
       <div className='film-section' >
       <ul className='films-list' >
         {loading? films.map((film) => (
-          <li key={film.episode_id}>
-            <img src={`https://picsum.photos/200?random=${film.episode_id}`} alt={film.title} className='film-img' />
+          <>
 
-            <div className='film-reel'>
-              
-            <img src={Film} alt="" />
-            <p>{film.title}</p>
-             
-            <img className='menu' src={menu} alt="" />
-
-            </div>
-          </li>
+          {toggleViewMode && <GridComponents film={film}/>}
+          {
+            !toggleViewMode && <li key={film.episode_id}>
+                  <p>{film.title}</p>
+                  <p>{film.director}</p>
+            </li>
+          }
+          </>
+        
           
         )):<Loading/>}
       </ul>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React ,{useEffect}from 'react'
 import hero from '../assest/hero.png'
 import './Home.css'
 const Home = () => {
